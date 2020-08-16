@@ -1,3 +1,33 @@
+# Challenge approach by Michael Wang
+
+## Getting started
+
+```sh
+# install
+npm run install:all
+
+# start server at http://localhost:4000/
+npm run start:server
+
+# start client at http://localhost:8000
+npm run start:client
+```
+
+## Used stack
+
+- Frontend:
+  - React
+  - React Router for routing
+  - React Bootstrap for basic styling
+  - Apollo Client for data fetching
+- Backend:
+  - Apollo Server for GQL APIs
+  - OrbitDB for datastore
+
+---
+
+Thank you for your review!
+
 # matters-fullstack-challenge
 
 Please write a simple website with the given features. The participant should clone this repo, and submit to a new branch with the participant's name.
@@ -15,7 +45,7 @@ Please write a simple website with the given features. The participant should cl
 1. Generate (or redirect to) an URL for the article.
 2. Pagnation of article list.
 
-### Recommended stack:
+### Recommended stack
 
 - language: TypeScript
 - frontend: React

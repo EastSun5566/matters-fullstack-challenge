@@ -1,18 +1,16 @@
 /**
  * This is an incomplete script of client app. Please
  * make it live with features we requested. :)
- *
  */
 
-import React from 'react'
-import { render } from 'react-dom'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'regenerator-runtime/runtime';
 
-const App = (): React.ReactElement => {
-  return (
-    <section>
-      Hello, world! :)
-    </section>
-  )
-}
+import React from 'react';
+import { render } from 'react-dom';
 
-render(<App />, document.getElementById('app'))
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { App } from './App';
+
+render(<App />, document.getElementById('app'));
