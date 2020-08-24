@@ -4,7 +4,7 @@ import FeedStore from 'orbit-db-feedstore';
 import { DataSource } from 'apollo-datasource';
 
 import { getDB } from '../../db';
-import { Article, AddArticleInput } from '../types';
+import { Article, AddArticleInput } from '../generated/graphql';
 
 interface FindFilter {
   gt?: string;
@@ -34,12 +34,12 @@ class ArticleStore extends DataSource {
   async findById(id: string) {
     await this.loadStore();
 
-    const { hash, payload } = this.store.get(id);
+    const { hash, payload } = this.store.get(id) || {};
 
-    return {
+    return hash && ({
       ...payload.value,
       id: hash,
-    };
+    });
   }
 
   async find(findFilter: FindFilter) {
