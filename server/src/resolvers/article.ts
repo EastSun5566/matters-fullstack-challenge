@@ -16,12 +16,12 @@ export const articles: QueryResolvers<Context>['articles'] = async (
     after,
     before,
   },
-  { dataSources: { articleStore } },
+  { dataSources: { ArticleService } },
 ): Promise<ResolversTypes['ArticleConnection']> => {
-  const nodes = await articleStore.find({ limit: first! || last!, lt: after!, gt: before! });
-  const hasPrev = !!(await articleStore.find({ gt: nodes[0]?.id })).length;
-  const hasNext = !!(await articleStore.find({ lt: nodes[nodes.length - 1]?.id })).length;
-  const total = await articleStore.count();
+  const nodes = await ArticleService.find({ limit: first! || last!, lt: after!, gt: before! });
+  const hasPrev = !!(await ArticleService.find({ gt: nodes[0]?.id })).length;
+  const hasNext = !!(await ArticleService.find({ lt: nodes[nodes.length - 1]?.id })).length;
+  const total = await ArticleService.count();
 
   return {
     nodes,
@@ -36,9 +36,9 @@ export const articles: QueryResolvers<Context>['articles'] = async (
 export const article: QueryResolvers<Context>['article'] = async (
   _,
   { id },
-  { dataSources: { articleStore } },
+  { dataSources },
 ): Promise<ResolversTypes['Article']> => {
-  const node = await articleStore.findById(id);
+  const node = await dataSources.ArticleService.findById(id);
 
   if (!node) throw new UserInputError('Not Found');
 
@@ -48,9 +48,9 @@ export const article: QueryResolvers<Context>['article'] = async (
 export const addArticle: MutationResolvers<Context>['addArticle'] = async (
   _,
   { input },
-  { dataSources: { articleStore } },
+  { dataSources },
 ): Promise<ResolversTypes['Article']> => {
-  const hash = await articleStore.create(input);
+  const hash = await dataSources.ArticleService.create(input);
 
   return {
     id: hash,

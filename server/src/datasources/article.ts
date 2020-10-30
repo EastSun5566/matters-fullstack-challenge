@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { Config } from 'apollo-server';
-import FeedStore from 'orbit-db-feedstore';
 import { DataSource } from 'apollo-datasource';
+import FeedStore from 'orbit-db-feedstore';
+import OrbitDB from 'orbit-db';
 
-import { getDB } from '../../db';
 import { Article, AddArticleInput } from '../generated/graphql';
 
 interface FindFilter {
@@ -15,10 +15,17 @@ interface FindFilter {
   reverse?: boolean;
 }
 
-class ArticleStore extends DataSource {
+export class ArticleService extends DataSource {
   context: Config['context'];
 
+  db: OrbitDB;
+
   store: FeedStore<Article>;
+
+  constructor({ db }: { db: OrbitDB }) {
+    super();
+    this.db = db;
+  }
 
   initialize({ context }: Config) {
     this.context = context;
@@ -27,8 +34,7 @@ class ArticleStore extends DataSource {
   async loadStore() {
     if (this.store) return;
 
-    const db = await getDB();
-    this.store = await db.feed('article');
+    this.store = await this.db.feed('article');
   }
 
   async findById(id: string) {
@@ -76,6 +82,4 @@ class ArticleStore extends DataSource {
     });
   }
 }
-
-export const articleStore = new ArticleStore();
-export default articleStore;
+export default ArticleService;
