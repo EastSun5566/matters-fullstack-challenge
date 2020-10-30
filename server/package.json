@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "nodemon -e ts --exec ts-node src",
+    "build": "tsc",
     "gen:type": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
