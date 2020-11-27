@@ -1,34 +1,3 @@
-# Challenge approach by Michael Wang
-
-## Getting started
-
-```sh
-# install dep
-npm run install:all
-
-# start server at http://localhost:4000
-npm run start:server
-
-# start client at http://localhost:8000
-npm run start:client
-```
-
-## Using stack
-
-- lang: TypeScript
-- frontend:
-  - React
-  - React Router for routing
-  - React Bootstrap for basic styling
-  - Apollo Client for data fetching
-- backend:
-  - Apollo Server for GQL APIs
-  - OrbitDB for datastore
-
----
-
-Thank you for your review!
-
 # matters-fullstack-challenge
 
 Please write a simple website with the given features. The participant should clone this repo, and submit to a new branch with the participant's name.
@@ -57,3 +26,32 @@ Please write a simple website with the given features. The participant should cl
 In order to make the process shorter, we've provided template and config exmaples in `client` and `server`, and feel free to refactor them and use your favorite tools and packages.
 
 Note: although using IPFS/OrbitDB on frontend and omit server would be easier, please treat IPFS as an external service, and connect to it via a data fetching layer.
+
+---
+
+# Challenge approach by Michael Wang
+
+## Using stack
+
+- lang: TypeScript
+- frontend:
+  - React
+  - React Router for routing
+  - React Bootstrap for basic styling
+  - Apollo Client for data fetching
+- backend:
+  - Apollo Server for GQL APIs
+  - OrbitDB for data storage
+
+## Getting started
+
+```sh
+# install dep
+npm run install:all
+
+# start server at http://localhost:4000
+npm run start:server
+
+# start client at http://localhost:8000
+npm run start:client
+```
