@@ -29,9 +29,9 @@ Note: although using IPFS/OrbitDB on frontend and omit server would be easier, p
 
 ---
 
-# Challenge approach by Michael Wang
+## Fullstack App
 
-## Using stack
+### Using stack
 
 - lang: TypeScript
 - frontend:
@@ -43,7 +43,7 @@ Note: although using IPFS/OrbitDB on frontend and omit server would be easier, p
   - Apollo Server for GQL APIs
   - OrbitDB for data storage
 
-## Getting started
+### Getting started
 
 ```sh
 # install dep
